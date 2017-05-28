@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>Twitch Streamers</title>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <h1>Twitch Streamers</h1>
+      </div>
+      <div class="col-sm-3 streamButtons">
+        <span id="all">All<br/></span>
+        <span id="online">Online<br/></span>
+        <span id="offline">Offline</span>
+      </div>
+    </div>
+    <div class="streamers">
+    </div>
+    <div class="addStreamers">
+      <input type="text" id="addStreamer" placeholder="Your streamer here"/>
+      <button class="btn" id="streamerButton">Add streamer</button>
+      <span id="warning"></span>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
