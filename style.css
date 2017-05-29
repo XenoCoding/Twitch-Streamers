@@ -64,6 +64,17 @@ a:visited {
   padding: 1%;
   background-color: #282828;
   border-radius: 5px;
+  border-color: white;
+  transition-property: all;
+  transition-duration: 500ms;
+  opacity: 0.8;
+}
+
+.channelRow:hover{
+  border-left: 10px solid white;
+  background-color: #4A4A4A;
+  opacity: 1;
+  box-shadow: 8px 8px 30px #000;
 }
 
 .channelStreams {
@@ -102,11 +113,6 @@ a:visited {
 .notStreaming {
   transition-property: background-color, border-left;
   transition-duration: 300ms;
-}
-
-.notStreaming:hover {
-  background-color: #555;
-  border-left: 10px solid black;
 }
 
 #offline {
@@ -158,12 +164,6 @@ a:visited {
   transition-property: background-color, border-left;
   transition-duration: 500ms;
 }
-
-.streaming:hover {
-  background-color: #7944F7;
-  border-left: 10px solid white;
-}
-
 
 #warning {
   color: red;
