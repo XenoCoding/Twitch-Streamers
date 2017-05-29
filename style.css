@@ -1,8 +1,8 @@
 body {
-  background-color: #111;
-  color: #eee;
-  margin: 5%;
-  font-family: Inconsolata;
+  background-color: #333 !important;
+  color: #eee !important;
+  margin: 5% !important;
+  font-family: Inconsolata !important;
 }
 
 #container {
