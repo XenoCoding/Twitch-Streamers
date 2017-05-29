@@ -23,7 +23,6 @@ a:visited {
 
 #all {
   color: white;
-  padding: 0px;
   transition-property: background-color, box-shadow, padding;
   transition-duration: 500ms;
 }
@@ -31,11 +30,10 @@ a:visited {
 #all:hover {
   background-color: #e55;
   box-shadow: 2px 2px 20px #000;
-  padding: 3px;
 }
 
 #body {
-  background-color: #333;
+  background-color: #666;
   color: #eee;
   margin: 5%;
   font-family: Inconsolata;
@@ -116,7 +114,6 @@ a:visited {
 }
 
 #offline {
-  padding: 2px;
   background-color: #282828;
   transition-property: background-color, box-shadow, padding;
   transition-duration: 500ms;
@@ -125,12 +122,10 @@ a:visited {
 #offline:hover {
   background-color: #e55;
   box-shadow: 2px 2px 20px #000;
-  padding: 4px;
 }
 
 
 #online {
-  padding: 2px;
   background-color: #3500D3;
   transition-property: background-color, box-shadow, padding;
   transition-duration: 500ms;
@@ -139,7 +134,6 @@ a:visited {
 #online:hover {
   background-color: #e55;
   box-shadow: 2px 2px 20px #000;
-  padding: 4px;
 }
 
 #streamerButton {
