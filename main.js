@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   //these are the base links for channels and streams
   var twitchChannels = "https://wind-bow.glitch.me/twitch-api/channels/";
   var twitchStreams = "https://wind-bow.glitch.me/twitch-api/streams/";
@@ -173,49 +174,4 @@ $(document).ready(function() {
 
   //updates the streamers once the page has loaded
   updateStreamers();
-
-  // grabs the channel's row, the streaming preview, and the height of the row
-  channelVideo = $(".channelVideos");
-  channelRow = $(".channelRow");
-  var rowHeight = channelRow.height() + 150;
-
-  //animates the row and preview when the user hovers over
-  channelRow.mouseenter(function() {
-    if ($(this).hasClass("streaming")) {
-      $(this).animate(
-        {
-          height: rowHeight + 200
-        },
-        1000
-      );
-
-      $(this).find(".channelVideos").show();
-      $(this).find(".channelVideos").animate(
-        {
-          opacity: "1"
-        },
-        500
-      );
-    }
-  });
-
-  //reverses the animation when the user stops hovering.
-  channelRow.mouseleave(function() {
-    if ($(this).hasClass("streaming")) {
-      $(this).find(".channelVideos").animate(
-        {
-          opacity: "0"
-        },
-        500
-      );
-      $(this).find(".channelVideos").show();
-
-      $(this).animate(
-        {
-          height: rowHeight
-        },
-        1000
-      );
-    }
-  });
 });
