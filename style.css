@@ -1,8 +1,99 @@
-body {
-  background-color: #333 !important;
-  color: #eee !important;
-  margin: 5% !important;
-  font-family: Inconsolata !important;
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+}
+
+#addStreamer {
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 1%;
+  width: 70%;
+  color: red;
+  text-shadow: 1px 1px 1px #666;
+}
+
+#all {
+  color: white;
+  transition-property: background-color, box-shadow, padding;
+  transition-duration: 500ms;
+}
+
+#all:hover {
+  background-color: #e55;
+  box-shadow: 2px 2px 20px #000;
+}
+
+#body {
+  background-color: #666;
+  color: #eee;
+  margin: 5%;
+  font-family: Inconsolata;
+}
+
+.channelLogos {
+  width: 10%;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin: 1%;
+  box-shadow: 5px 5px 15px #111;
+}
+
+.channelNames {
+  color: #ccf;
+  margin-left: 1%;
+  background-color: #000;
+  padding: 3px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 15px #000;
+}
+
+.channelRow {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 1%;
+  background-color: #282828;
+  border-radius: 5px;
+  border-color: white;
+  transition-property: all;
+  transition-duration: 500ms;
+  opacity: 0.8;
+}
+
+.channelRow:hover{
+  border-left: 10px solid white;
+  background-color: #4A4A4A;
+  opacity: 1;
+  box-shadow: 8px 8px 30px #000;
+}
+
+.channelStreams {
+  display: none;
+  font-weight: bold;
+  color: #f44;
+  background-color: #000;
+  padding: 3px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 15px #000;
+}
+
+.channelVideos {
+  width: 100%;
+  height: 200px;
+  display: none;
+  opacity: 0;
+  border-radius: 10px;
+  border: 3px solid #ddd;
+  background-position: center;
+  background-size: cover;
 }
 
 #container {
@@ -17,13 +108,32 @@ body {
   margin-right: auto;
 }
 
-#addStreamer {
-  border-radius: 10px;
-  margin-top: 20px;
-  padding: 1%;
-  width: 70%;
-  color: red;
-  text-shadow: 1px 1px 1px #666;
+.notStreaming {
+  transition-property: background-color, border-left;
+  transition-duration: 300ms;
+}
+
+#offline {
+  background-color: #282828;
+  transition-property: background-color, box-shadow, padding;
+  transition-duration: 500ms;
+}
+
+#offline:hover {
+  background-color: #e55;
+  box-shadow: 2px 2px 20px #000;
+}
+
+
+#online {
+  background-color: #3500D3;
+  transition-property: background-color, box-shadow, padding;
+  transition-duration: 500ms;
+}
+
+#online:hover {
+  background-color: #e55;
+  box-shadow: 2px 2px 20px #000;
 }
 
 #streamerButton {
@@ -43,132 +153,18 @@ body {
   box-shadow: 1px 1px 5px #000;
 }
 
-.channelLogos {
-  width: 10%;
-  border: 2px solid white;
-  border-radius: 50%;
-  margin: 1%;
-  box-shadow: 5px 5px 15px #111;
-}
-
-.channelRow {
-  margin-top: 1%;
-  margin-bottom: 1%;
-  padding: 1%;
-  background-color: #282828;
-  border-radius: 5px;
-}
-
-#warning {
-  color: red;
-}
-
-.channelNames {
-  color: #ccf;
-  margin-left: 1%;
-  background-color: #000;
-  padding: 3px;
-  border-radius: 3px;
-  box-shadow: 3px 3px 15px #000;
-}
-
-.channelVideos {
-  width: 100%;
-  height: 200px;
-  display: none;
-  opacity: 0;
-  border-radius: 10px;
-  border: 3px solid #ddd;
-  background-position: center;
-  background-size: cover;
-}
-
 .streaming {
   background-color: #3500D3;
   transition-property: background-color, border-left;
   transition-duration: 500ms;
 }
 
-.streaming:hover {
-  background-color: #7944F7;
-  border-left: 10px solid white;
-}
-
-.notStreaming {
-  transition-property: background-color, border-left;
-  transition-duration: 300ms;
-}
-
-.notStreaming:hover {
-  background-color: #555;
-  border-left: 10px solid black;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-}
-
-a:hover {
-  color: white;
-  text-decoration: none;
-}
-
-a:visited {
-  color: white;
-}
-
-.channelStreams {
-  display: none;
-  font-weight: bold;
-  color: #f44;
-  background-color: #000;
-  padding: 3px;
-  border-radius: 3px;
-  box-shadow: 3px 3px 15px #000;
+#warning {
+  color: red;
 }
 
 .streamButtons {
   text-align: right;
   font-size: 12px;
   cursor: pointer;
-}
-
-#all {
-  color: white;
-  padding: 0px;
-  transition-property: background-color, box-shadow, padding;
-  transition-duration: 500ms;
-}
-
-#all:hover {
-  background-color: #e55;
-  box-shadow: 2px 2px 20px #000;
-  padding: 3px;
-}
-
-#online {
-  padding: 2px;
-  background-color: #3500D3;
-  transition-property: background-color, box-shadow, padding;
-  transition-duration: 500ms;
-}
-
-#online:hover {
-  background-color: #e55;
-  box-shadow: 2px 2px 20px #000;
-  padding: 4px;
-}
-
-#offline {
-  padding: 2px;
-  background-color: #282828;
-  transition-property: background-color, box-shadow, padding;
-  transition-duration: 500ms;
-}
-
-#offline:hover {
-  background-color: #e55;
-  box-shadow: 2px 2px 20px #000;
-  padding: 4px;
 }
