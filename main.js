@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   //these are the base links for channels and streams
   var twitchChannels = "https://wind-bow.glitch.me/twitch-api/channels/";
   var twitchStreams = "https://wind-bow.glitch.me/twitch-api/streams/";
@@ -40,6 +41,28 @@ $(document).ready(function() {
   var streamerButton = $("#streamerButton");
   var streamersContainer = $(".streamers");
   var warning = $("#warning");
+
+  function addNewStreamer(){
+
+    // we make another getJSON call so that we can see if the channel the user submitted exists.
+    $.getJSON(
+      "https://wind-bow.glitch.me/twitch-api/channels/" + addStreamer.val(),
+      function(data) {
+        //if the channel does not exist, then we tell the user inside our warning element.
+        if (data.error) {
+          warning.append("That twitch account does not exist!");
+        } else if (jQuery.inArray(addStreamer.val(), streamers) != -1) {
+          // we also want to check to see if we are already displaying that channel
+          warning.append("That twitch account is already on the list!");
+
+          //if the channel exists and it's not already on the list, then we add the channel to our list of channels and we update the streamers.
+        } else {
+          streamers.push(addStreamer.val());
+          updateStreamers();
+        }
+      }
+    );
+  }
 
   //this is called whenever the list of streams needs to be displayed again
   function updateStreamers() {
@@ -132,27 +155,24 @@ $(document).ready(function() {
 
   // calls the function when the user submits the name of the streamer he wants to display
   streamerButton.click(function() {
-    //clears the warning's html so it can display something new if it needs to
-    warning.html("");
 
-    // we make another getJSON call so that we can see if the channel the user submitted exists.
-    $.getJSON(
-      "https://wind-bow.glitch.me/twitch-api/channels/" + addStreamer.val(),
-      function(data) {
-        //if the channel does not exist, then we tell the user inside our warning element.
-        if (data.error) {
-          warning.append("That twitch account does not exist!");
-        } else if (jQuery.inArray(addStreamer.val(), streamers) != -1) {
-          // we also want to check to see if we are already displaying that channel
-          warning.append("That twitch account is already on the list!");
+    if(addStreamer.val){
+      //clears the warning's html so it can display something new if it needs to
+      warning.html('');
 
-          //if the channel exists and it's not already on the list, then we add the channel to our list of channels and we update the streamers.
-        } else {
-          streamers.push(addStreamer.val());
-          updateStreamers();
-        }
-      }
-    );
+      addNewStreamer();
+    }
+
+  });
+
+  addStreamer.keypress(function(e) {
+
+    if(addStreamer.val && e.which == 13){
+      warning.html('');
+
+      addNewStreamer();
+    }
+
   });
 
   //ROWS TO HIDE OR DISPLAY
@@ -173,49 +193,4 @@ $(document).ready(function() {
 
   //updates the streamers once the page has loaded
   updateStreamers();
-
-  // grabs the channel's row, the streaming preview, and the height of the row
-  channelVideo = $(".channelVideos");
-  channelRow = $(".channelRow");
-  var rowHeight = channelRow.height() + 150;
-
-  //animates the row and preview when the user hovers over
-  channelRow.mouseenter(function() {
-    if ($(this).hasClass("streaming")) {
-      $(this).animate(
-        {
-          height: rowHeight + 200
-        },
-        1000
-      );
-
-      $(this).find(".channelVideos").show();
-      $(this).find(".channelVideos").animate(
-        {
-          opacity: "1"
-        },
-        500
-      );
-    }
-  });
-
-  //reverses the animation when the user stops hovering.
-  channelRow.mouseleave(function() {
-    if ($(this).hasClass("streaming")) {
-      $(this).find(".channelVideos").animate(
-        {
-          opacity: "0"
-        },
-        500
-      );
-      $(this).find(".channelVideos").show();
-
-      $(this).animate(
-        {
-          height: rowHeight
-        },
-        1000
-      );
-    }
-  });
 });
