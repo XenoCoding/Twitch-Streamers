@@ -71,6 +71,7 @@ $(document).ready(function() {
 
     //loops through all of the streamers in the array
     for (let i = 0; i < streamers.length; i++) {
+
       // sets up the links for each individual streamer
       channel = twitchChannels + streamers[i] + "?callback=?";
       stream = twitchStreams + streamers[i] + "?callback=?";
@@ -93,7 +94,7 @@ $(document).ready(function() {
       );
 
       // makes the first getJSON call, retrieving data about the streamer's channel
-      $.getJSON(channel, function(data) {
+      $.getJSON(channel, function(channelData) {
         // accesses the HTML elements we just created based on their id. that way we get each individual one
         channelLogo = $("#" + streamers[i] + "logo");
         channelName = $("#" + streamers[i] + "name");
@@ -101,16 +102,16 @@ $(document).ready(function() {
         channelRow = $("#" + streamers[i] + "Row");
 
         //uses the data retrieved to create a url property for the channel's banner
-        channelBanner = 'url("' + data.profile_banner + '")';
+        channelBanner = 'url("' + channelData.profile_banner + '")';
 
         //changes the channel's background image to the channel banner, as well as creates the logo image, the channel name, and the link to the channel.
         channelRow.css("background-image", channelBanner);
-        channelLogo.attr("src", data.logo);
-        channelName.html(data.display_name);
-        channelLink.attr("href", data.url);
+        channelLogo.attr("src", channelData.logo);
+        channelName.html(channelData.display_name);
+        channelLink.attr("href", channelData.url);
 
         //this adds a title to the row, telling the user what game the channel plays
-        channelRow.attr("title", data.game);
+        channelRow.attr("title", channelData.game);
 
         //adds some styling for the background image.
         channelRow.css("background-size", "cover");
@@ -118,29 +119,21 @@ $(document).ready(function() {
       });
 
       //all of the channel rows should be created. now we want to grab additional information and use it if the channel is streaming
-      $.getJSON(stream, function(data) {
-        //accesses the HTML elements we want to alter
+      $.getJSON(stream, function(streamData) {
+
         channelStream = $("#" + streamers[i] + "stream");
-        channelVideo = $("#" + streamers[i] + "Video");
 
         //this will return true if the channel is currently streaming
-        if (data.stream) {
+        if (streamData.stream) {
           //we add the "streaming" class to the row to give it relevant css properties
           channelRow.addClass("streaming");
 
           //we display the name of the stream
-          channelStream.html(data.stream.channel.status);
+          channelStream.html(streamData.stream.channel.status);
           channelStream.css("display", "block");
 
           //we give the name of the channel a background color of blue
           channelName.css("background-color", "#3500D3");
-
-          //we grab the url of the preview of the stream and add it as a background image. we also add a title to the preview so that the user can see how many people are watching the stream
-          channelVideo.css(
-            "background-image",
-            'url("' + data.stream.preview.large + '")'
-          );
-          channelVideo.attr("title", "Viewers: " + data.stream.viewers);
 
           // we store all of the streaming channels so that we can use it later
           streaming = $(".streaming");
