@@ -125,6 +125,7 @@ $(document).ready(function() {
 
         //this will return true if the channel is currently streaming
         if (streamData.stream) {
+          console.log(streamData.stream);
           //we add the "streaming" class to the row to give it relevant css properties
           channelRow.addClass("streaming");
 
@@ -186,4 +187,5 @@ $(document).ready(function() {
 
   //updates the streamers once the page has loaded
   updateStreamers();
+  
 });
